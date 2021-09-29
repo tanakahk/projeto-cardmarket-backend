@@ -1,0 +1,23 @@
+{
+  "name": "full-stack-api",
+  "version": "1.0.0",
+  "description": "Aplicação do conhecimento sobre API em um único projeto que se ligará com o projeto full stack.",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon -L",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanakahk/full-stack-API.git"
+  },
+  "author": "Tanaka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tanakahk/full-stack-API/issues"
+  },
+  "homepage": "https://github.com/tanakahk/full-stack-API#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
