@@ -1,0 +1,33 @@
+version: "3.9"
+services: 
+  sr-api:
+    container_name: sr-api
+    build: .
+    restart: "no"
+    env_file:
+      - .env
+    volumes: 
+      - .:/usr/src/app
+    ports: 
+      - "5000:5000"
+    networks: 
+      - intnet
+    command: "npm run dev"
+
+  sr-db:
+    container_name: sr-db
+    image: mysql
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes: 
+      - ".docker/mysql:/var/lib/mysql"
+    ports: 
+      - 3307:3306
+    networks: 
+      - intnet
+    command: --default-authentication-plugin=mysql_native_password
+
+networks: 
+  intnet:
+    driver: bridge
