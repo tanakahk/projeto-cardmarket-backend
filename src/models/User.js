@@ -15,7 +15,7 @@ module.exports = class User extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: [ "username", "password" ],
+      required: ["username", "password"],
       properties: {
         id: { type: "integer" },
         created_at: { type: "timestamp" },

@@ -15,7 +15,7 @@ module.exports = class SrStatus extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: [ "atk", "hp", "def", "cost", "sp", "cooldown", "sr_id" ],
+      required: ["atk", "hp", "def", "cost", "sp", "cooldown", "sr_id"],
       properties: {
         id: { type: "integer" },
         atk: { type: "integer" },
