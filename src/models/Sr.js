@@ -15,7 +15,7 @@ module.exports = class Sr extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: [ "price" ],
+      required: ["price"],
       properties: {
         id: { type: "integer" },
         created_at: { type: "timestamp" },

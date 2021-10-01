@@ -15,7 +15,7 @@ module.exports = class Billing extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: [ "trx_type", "amount", "user_id", "user_sr_id" ],
+      required: ["trx_type", "amount", "user_id", "user_sr_id"],
       properties: {
         id: { type: "integer" },
         created_at: { type: "timestamp" },
