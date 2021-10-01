@@ -23,6 +23,7 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "knex": "^0.95.11",
-    "mysql2": "^2.3.0"
+    "mysql2": "^2.3.0",
+    "objection": "^2.2.16"
   }
 }
