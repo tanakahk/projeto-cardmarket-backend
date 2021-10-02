@@ -7,4 +7,7 @@ docker-compose up --build
 
 # Entrar no container (com ele rodando):
 docker exec -it sr-api bash
+
+# Atualizar os módulos
+npm run update
 ```
