@@ -389,7 +389,11 @@
         "in": "path",
         "required": true,
         "schema": {
-          "type": "string"
+          "type": "integer",
+          "exclusiveMinimum": true,
+          "exclusiveMaximum": true,
+          "minimum": 7,
+          "maximum": 7
         },
         "description": "pega o id que o user passar na url ou path"
       }
