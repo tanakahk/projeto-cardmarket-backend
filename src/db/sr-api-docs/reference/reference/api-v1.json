@@ -1,12 +1,18 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "api-v1",
-    "version": "1.0"
+    "title": "API do projeto full stack da ingate",
+    "version": "1.0",
+    "description": "API desenvolvida para colocar em prática 110% dos conhecimentos obtidos no curso full stack",
+    "contact": {
+      "url": "https://github.com/tanakahk",
+      "name": "Tanaka"
+    }
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
+      "url": "http://localhost:5000",
+      "description": "dev"
     }
   ],
   "paths": {
@@ -207,6 +213,59 @@
           }
         ]
       }
+    },
+    "/sr_info": {
+      "get": {
+        "summary": "Sr Info",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/SrStatusObj"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-sr_info",
+        "description": "usa o id da skill para buscar mais info sobre ela",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/headerToken"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/srId"
+        }
+      ]
     }
   },
   "components": {
@@ -262,6 +321,49 @@
             "sr_url"
           ]
         }
+      },
+      "SrStatusObj": {
+        "title": "SrStatusObj",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "url": {
+            "type": "string"
+          },
+          "atk": {
+            "type": "integer"
+          },
+          "hp": {
+            "type": "integer"
+          },
+          "def": {
+            "type": "integer"
+          },
+          "cost": {
+            "type": "integer"
+          },
+          "sp": {
+            "type": "integer"
+          },
+          "cooldown": {
+            "type": "integer"
+          },
+          "price": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "atk",
+          "hp",
+          "def",
+          "cost",
+          "sp",
+          "cooldown",
+          "price"
+        ]
       }
     },
     "parameters": {
@@ -281,7 +383,27 @@
           "type": "string"
         },
         "description": "É passado o token aqui para manter o user logado"
+      },
+      "srId": {
+        "name": ":sr_id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "pega o id que o user passar na url ou path"
+      }
+    },
+    "securitySchemes": {
+      "JWT": {
+        "type": "http",
+        "scheme": "bearer"
       }
     }
-  }
+  },
+  "security": [
+    {
+      "jwt": []
+    }
+  ]
 }
