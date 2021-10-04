@@ -22,7 +22,7 @@ module.exports = class User extends Model {
         updated_at: { type: "timestamp" },
         deleted_at: { type: "timestamp" },
         username: { type: "string", minLength: 1, maxLength: 20 },
-        password: { type: "string", minLength: 1, maxLength: 50 },
+        password: { type: "string", minLength: 1, maxLength: 255 },
       },
     }
   }

@@ -9,7 +9,7 @@ exports.up = function (knex) {
       updatedAt(knex, table)
       table.timestamp("deleted_at")
       table.string("username", 20).notNullable()
-      table.string("password", 50).notNullable()
+      table.string("password", 255).notNullable()
     })
 
 
