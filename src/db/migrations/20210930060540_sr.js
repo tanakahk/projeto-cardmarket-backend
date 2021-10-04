@@ -9,6 +9,7 @@ exports.up = function (knex) {
       updatedAt(knex, table)
       table.timestamp("deleted_at")
       table.specificType("price", "smallint(5)").notNullable()
+      table.specificType("sr_id", "mediumint(7)").notNullable()
     })
     // users_srs
     .createTable("users_srs", function (table) {
