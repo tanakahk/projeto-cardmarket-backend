@@ -268,9 +268,9 @@
       ]
     },
     "/trx_sr": {
-      "get": {
-        "summary": "Your GET endpoint",
-        "tags": [],
+      "post": {
+        "summary": "",
+        "operationId": "post-trx_sr",
         "responses": {
           "200": {
             "description": "OK",
@@ -309,7 +309,12 @@
             }
           }
         },
-        "operationId": "get-trx_sr",
+        "description": "Essa função realiza a compra e venda de sr",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/headerToken"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -334,13 +339,111 @@
               }
             }
           }
+        }
+      }
+    },
+    "my_sr": {
+      "get": {
+        "summary": "My SR",
+        "operationId": "get-cart",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status",
+                    "result"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "status"
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          },
+          "": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
+        "description": "Essa chamada vai renderizar as sr q foram compradas",
         "parameters": [
           {
             "$ref": "#/components/parameters/headerToken"
           }
-        ]
-      }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "username"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "parameters": []
     }
   },
   "components": {

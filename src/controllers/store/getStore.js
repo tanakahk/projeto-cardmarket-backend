@@ -8,7 +8,6 @@ const getStore = async (req, res) => {
   if (req.query.page) {
     page = req.query.page
   }
-  console.log("a pg q o user quer ver é:", page);
 
   // --------- ajusta os contadores para o user receber só um intervalo 
   let minCounter = (page * 15 - 15) + 1
@@ -16,7 +15,6 @@ const getStore = async (req, res) => {
   if (minCounter) {
     let minCounter = page * 15 - 15
   }
-  console.log("vamos mostrar de:", minCounter, "até", maxCounter);
 
   // ----- faz o loop para adicionar a url e o id no array de resultado
   for (minCounter; minCounter <= maxCounter; minCounter++) {
@@ -36,14 +34,14 @@ const getStore = async (req, res) => {
     if (minCounter >= 1000) {
       tempId = minCounter.toString();
     }
-    
+
     // -------- Configura o objeto para ser colocado no array
     tempUrl = tempUrl.concat(`${defaultSrUrl}`, tempId, '.png?raw=true')
     sr_response = {
       sr_id: parseInt(tempUrl.slice(91, 98), 10),
       sr_url: tempUrl
     }
-    
+
     // --------------- Adicionar o objeto no array
     response.result.push(sr_response)
   }

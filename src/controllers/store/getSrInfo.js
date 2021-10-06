@@ -25,8 +25,6 @@ const getSrInfo = async (req, res) => {
   let tempSr = {}
   const defaultSrUrl = "https://github.com/Nayuta-Kani/SAOIF-Skill-Records-Database/blob/master/srimages/sr_icon_l_"
 
-  // console.log("sr_id .......", req.params.sr_id);
-
   // ------------------------------ valida o ID
   if (!validaSrId(response, req.params.sr_id)) {
     return res.status(400).json(response)
@@ -39,8 +37,6 @@ const getSrInfo = async (req, res) => {
   // ----------------- verifica se o ID que o user passou já tem uma entry no banco srs
   const sr_status = await Sr.query().where({ sr_id: req.params.sr_id }).first()
   if (sr_status) {
-    // ------------------- se tiver ele pega as infos
-    console.log("tem ........", sr_status);
 
     // --------------- consulta o sr para pegar o id q relaciona as tabelas
     const newSrId = await Sr.query().where({ sr_id: req.params.sr_id }).first()
@@ -92,10 +88,8 @@ const getSrInfo = async (req, res) => {
       cooldown: newStatus['cooldown'],
       price: newSr['price']
     }
-
-    console.log("tempSr ..........", tempSr);
   }
-  
+
   // ------------ cria a reposta do user com as infos do ID q ele pediu e retorna as infos para ele
   if (tempSr) {
     response.status = "OK"
