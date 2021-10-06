@@ -20,7 +20,7 @@ const validaEntry = (req, user, sr, response) => {
     response.status = "Skill inexistente"
     return false
   }
-  if (req.trx_type === 0 || req.trx_type === 1) {}
+  if (req.trx_type === 0 || req.trx_type === 1) { }
   else {
     response.status = "trx_type inválido / inexistente. Mande 1 para comprar ou 0 para vender."
     return false
@@ -31,7 +31,6 @@ const validaEntry = (req, user, sr, response) => {
 
 const postTrxSr = async (req, res) => {
   const response = { status: "ERROR" }
-  console.log("id ..........", req.body);
 
   const user = await User.query().where({ username: req.body.username }).first()
   const sr = await Sr.query().where({ sr_id: req.body.sr_id }).first()
@@ -41,7 +40,6 @@ const postTrxSr = async (req, res) => {
   }
 
   if (user && sr) {
-    console.log("funcionando");
     const newUserSr = await UserSr.query().insert({
       user_id: user['id'],
       sr_id: sr['id']
