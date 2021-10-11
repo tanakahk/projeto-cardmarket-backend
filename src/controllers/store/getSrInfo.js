@@ -104,11 +104,11 @@ const getSrInfo = async (req, res) => {
       cooldown: tempSr['cooldown'],
       price: tempSr['price'],
     }
-    return res.json(response)
+    return res.status(200).json(response)
   }
 
   // ------- Caso ele ainda n tenha sido retornado, dá um erro
-  return res.status(400).json(response)
+  return res.status(500).json(response)
 }
 
 module.exports = getSrInfo

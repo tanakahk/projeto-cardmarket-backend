@@ -19,7 +19,7 @@ const postSignup = async (req, res) => {
   const response = { status: "ERROR" }
 
   if (!validateRequest(req, response)) {
-    return res.status(400).json(response)
+    return res.status(401).json(response)
   }
 
   const user = await User.query().where({ username: req.body.username }).first()

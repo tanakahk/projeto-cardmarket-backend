@@ -3,7 +3,7 @@ const Sr = require("../../models/Sr");
 const User = require("../../models/User");
 const UserSr = require("../../models/UserSr");
 
-const validaEntry = (req, user, sr, response) => {
+const validaEntry = (req, response) => {
   if (!req.username) {
     response.status = "User não passou um username"
     return false
@@ -12,6 +12,10 @@ const validaEntry = (req, user, sr, response) => {
     response.status = "User não passou um sr_id"
     return false
   }
+  return true
+}
+
+const validaDBs = (user, sr, response) => {
   if (!user) {
     response.status = "Usuário inexistente"
     return false
@@ -26,10 +30,14 @@ const validaEntry = (req, user, sr, response) => {
 const postTrxSr = async (req, res) => {
   const response = { status: "ERROR" }
 
+  if (!validaEntry(req.body, response)) {
+    return res.status(400).json(response)
+  } 
+
   const user = await User.query().where({ username: req.body.username }).first()
   const sr = await Sr.query().where({ sr_id: req.body.sr_id }).first()
 
-  if (!validaEntry(req.body, user, sr, response)) {
+  if (!validaDBs(user, sr, response)) {
     return res.status(400).json(response)
   } else {
     const newUserSr = await UserSr.query().insert({
@@ -39,7 +47,7 @@ const postTrxSr = async (req, res) => {
     if (newUserSr instanceof UserSr) {
       switch (req.body.trx_type) {
         case 1:
-          console.log("comprando");
+          // Comprando
           const newBillingBuy = await Billing.query().insert({
             trx_type: req.body.trx_type,
             amount: sr['price'],
@@ -53,7 +61,7 @@ const postTrxSr = async (req, res) => {
           }
           break
         case 0:
-          console.log("vendendo");
+          // Vendendo
           const newBillingSell = await Billing.query().insert({
             trx_type: req.body.trx_type,
             amount: sr['price'],
@@ -85,7 +93,7 @@ const postTrxSr = async (req, res) => {
       }
     }
   }
-  return res.status(400).json(response)
+  return res.status(500).json(response)
 }
 
 module.exports = postTrxSr
