@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon -L",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "clear && NODE_ENV=test mocha src/test/**/*.js --exit",
     "update": "ncu"
   },
   "repository": {
@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/tanakahk/full-stack-API#readme",
   "devDependencies": {
-    "nodemon": "^2.0.13"
+    "chai": "^4.3.4",
+    "mocha": "^9.1.2",
+    "nodemon": "^2.0.13",
+    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -30,7 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.11",
     "mysql2": "^2.3.0",
-    "objection": "^2.2.16",
+    "objection": "^2.2.17",
     "supertest": "^6.1.6"
   }
 }

@@ -5,16 +5,18 @@ const getStore = async (req, res) => {
 
   // ------------- ajusta o numero da pg q o user vai receber ---------
   let page = 1
-  if (req.query.page) {
+
+  if (req.query.page < 0) {
+    delete response.result
+    response.status = "Número negativo é inválido"
+    return res.status(400).json(response)
+  } else {
     page = req.query.page
   }
 
   // --------- ajusta os contadores para o user receber só um intervalo 
   let minCounter = (page * 15 - 15) + 1
   const maxCounter = page * 15
-  if (minCounter) {
-    let minCounter = page * 15 - 15
-  }
 
   // ----- faz o loop para adicionar a url e o id no array de resultado
   for (minCounter; minCounter <= maxCounter; minCounter++) {
@@ -49,11 +51,11 @@ const getStore = async (req, res) => {
   // ------ retorna status positivo e o array caso dê td certo
   if (response.result) {
     response.status = "OK"
-    return res.json(response)
+    return res.status(200).json(response)
   }
 
   // ------- Caso ele ainda n tenha sido retornado, dá um erro
-  return res.status(400).json(response)
+  return res.status(500).json(response)
 }
 
 module.exports = getStore

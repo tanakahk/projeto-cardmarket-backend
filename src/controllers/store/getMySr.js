@@ -6,12 +6,18 @@ const UserSr = require("../../models/UserSr");
 const getMySr = async (req, res) => {
   const response = { status: "ERROR", result: [] }
 
+  if (!req.body.username) {
+    response.status = "Usuário não encontrado"
+    delete response.result
+    return res.status(400).json(response)
+  }
+
   // verifica se o user existe na table user e retorna a entry dele
   const user = await User.query().where({ username: req.body.username }).first()
 
   // verifica se user pegou algum resultado
   if (!user) {
-    response.status = "Usuário inexistente"
+    response.status = "Usuário inválido"
     delete response.result
     return res.status(400).json(response)
   }
@@ -62,7 +68,7 @@ const getMySr = async (req, res) => {
     return res.status(200).json(response)
   }
 
-  return res.status(400).json(response)
+  return res.status(500).json(response)
 }
 
 module.exports = getMySr
