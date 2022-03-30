@@ -13,7 +13,7 @@ const validaSrId = (response, id) => {
     response.status = "O ID está incorreto"
     return false
   }
-  if (id.slice(0, 3) != 600) {
+  if (id.slice(0, 3) != 610) {
     response.status = "O ID está incorreto"
     return false
   }
