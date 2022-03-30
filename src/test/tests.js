@@ -14,7 +14,7 @@ const user = {
 
 // miscellaneous (variáveis diversas)
 const misc = {
-  sr_id: "6000560",
+  sr_id: "6100560",
   store_pg: "5",
   store_pg_negative: 0,
   sr_id_8_digits: "",
