@@ -1,13 +1,20 @@
-# full-stack-API
-Aplicação do conhecimento sobre API em um único projeto que se ligará com o projeto full stack
-
+## Projeto backend de uma loja de cartas
+Projeto feito para praticar os conhecimentos do curso da Ingate de desenvolvimento WEB fullstack
+### Buildar o container:
 ```bash
-# Buildar o container:
-docker-compose up --build
-
-# Entrar no container (com ele rodando):
+sudo docker-compose up --build
+```
+### Entrar no container (com ele rodando):
+```bash
 docker exec -it sr-api bash
-
-# Atualizar os módulos
+```
+### Executar os testes da API:
+```bash
+npm run test
+```
+### Atualizar os módulos:
+```bash
 npm run update
 ```
+## Anotações
+[Notion](https://tanakaspace.notion.site/Backend-by-yoyo-e8225b9f336346f2846046c7d6356683)
