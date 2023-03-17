@@ -1,5 +1,5 @@
 ## Projeto backend de uma loja de cartas
-Projeto feito para praticar os conhecimentos do curso da Ingate de desenvolvimento WEB fullstack
+Projeto feito para praticar os conhecimentos do curso da Ingate de desenvolvimento WEB full stack
 ### Buildar o container:
 ```bash
 sudo docker-compose up --build
