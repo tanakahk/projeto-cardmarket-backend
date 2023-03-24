@@ -219,7 +219,7 @@ const init = () => {
         .catch((err) => console.log(err))
     })
 
-    it("Store", (done) => {
+    it("Store without specific Page", (done) => {
       request(server)
         .get("/v1/store")
         .set({ "authorization": `Bearer ${user.token}` })
@@ -305,6 +305,21 @@ const init = () => {
             expect(res.statusCode).equal(200)
             expect(res.body.status).equal("OK")
             expect(res.body.result).not.equal("")
+            done()
+          } catch (err) {
+            done(err)
+          }
+        })
+    })
+
+    it("SR Info Without ID", (done) => {
+      request(server)
+        .get(`/v1/sr_info/`)
+        .set({ "authorization": `Bearer ${user.token}` })
+        .send({})
+        .then((res) => {
+          try {
+            expect(res.statusCode).equal(404)
             done()
           } catch (err) {
             done(err)

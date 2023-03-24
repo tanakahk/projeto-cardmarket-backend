@@ -20,22 +20,22 @@
   },
   "homepage": "https://github.com/tanakahk/full-stack-API#readme",
   "devDependencies": {
-    "chai": "^4.3.6",
-    "mocha": "^9.2.1",
+    "chai": "^4.3.7",
+    "mocha": "^9.2.2",
     "nodemon": "^2.0.15",
     "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   },
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.2",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.95.11",
+    "knex": "^0.95.15",
     "mysql2": "^2.3.3",
-    "objection": "^2.2.17",
-    "supertest": "^6.2.2"
+    "objection": "^2.2.18",
+    "supertest": "^6.3.3"
   },
   "engines": {
     "node": "14.x"

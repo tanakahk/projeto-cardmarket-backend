@@ -6,7 +6,9 @@ const getStore = async (req, res) => {
   // ------------- ajusta o numero da pg q o user vai receber ---------
   let page = 1
 
-  if (req.query.page < 0) {
+  if (!req.query.page){ // se n passar nd ele considera que o usr quer a pg 1
+    page = 1
+  } else if (req.query.page < 0) { // se for menor q 0 da erro
     delete response.result
     response.status = "Número negativo é inválido"
     return res.status(400).json(response)
