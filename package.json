@@ -1,5 +1,5 @@
 {
-  "name": "full-stack-api",
+  "name": "cardmarket-backend",
   "version": "1.0.0",
   "description": "Aplicação do conhecimento sobre API em um único projeto que se ligará com o projeto full stack.",
   "main": "src/server.js",
